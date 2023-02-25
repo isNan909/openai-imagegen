@@ -12,9 +12,7 @@ export default function Home() {
     const url = await fetch(`http://localhost:3000/api/generate`, {
       method: 'POST',
       body: JSON.stringify({
-        prompt: `${searchVal}`,
-        n: 1,
-        size: "1024x1024",
+        prompt: `${searchVal}`
       }),
     });
     setImage(url.url);

@@ -24,7 +24,6 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const promptString = req.body.prompt;
-  console.log(promptString);
   if(!promptString || undefined) {
     return new Response('you need a prompt', { status: 400 })
   }
