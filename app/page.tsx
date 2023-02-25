@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from "react";
-import styles from './page.module.css'
+import styles from './page.module.css';
 export default function Home() {
   const [searchVal, setSearchVal] = useState("");
   const [loading, setLoading] = useState(false);
@@ -9,13 +9,17 @@ export default function Home() {
   async function generateImage(): Promise<any>{
     setLoading(true);
     setSearchVal("");
-    const url = await fetch(`http://localhost:3000/api/generate`, {
+    const response = await fetch(`api/generate`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         prompt: `${searchVal}`
       }),
-    });
-    setImage(url.url);
+    })
+    const data = await response.json();
+    setImage(data.url);
     setLoading(false);
   }
 
