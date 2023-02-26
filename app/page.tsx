@@ -8,7 +8,6 @@ export default function Home() {
   const [image, setImage] = useState('');
   async function generateImage(): Promise<any>{
     setLoading(true);
-    setSearchVal("");
     const response = await fetch(`api/generate`, {
       method: 'POST',
       headers: {
@@ -20,17 +19,22 @@ export default function Home() {
     })
     const data = await response.json();
     setImage(data.url);
+    setSearchVal("");
     setLoading(false);
   }
 
   return (
+  <>
     <main className={styles.main}>
-      <h1>AI Image Generation with OpenAI</h1>
-      <input value={searchVal} type="text"  onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSearchVal(event.target.value)}/>
-      <button onClick={() => generateImage()}>{loading ? 'loading...' : 'generate image'}</button>
+      <div className={styles.background}>
+        <h1>AI Image Generation with OpenAI</h1>
+        <input value={searchVal} type="text"  onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSearchVal(event.target.value)}/>
+        <button onClick={() => generateImage()}>{loading ? 'Loading...' : 'Generate image'}</button>
+      </div>
       {image && <>
-        <img src={image} alt="ai generated"/>
+        <img className="image-result" src={image} alt="ai generated"/>
       </>}
     </main>
+  </>
   )
 }

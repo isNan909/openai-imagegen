@@ -4,5 +4,39 @@
   justify-content: start;
   align-items: center;
   padding: 6rem;
-  min-height: 100vh;
+}
+
+.background {
+  background-color: #a700ff26;
+  width: 100%;
+  padding: 40px 0px;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.main h1{
+  padding-bottom: 20px;
+}
+
+.main input{
+  width: 20vw;
+  height: 40px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.main button{
+  background-color: blue;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.main img{
+  margin-top: 40px;
 }
